@@ -22,7 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
       .getEmployee(this.id)
       .subscribe(
         data => {
-          console.log(data)
+          console.log(data);
           this.employee = data;
         },
         error => console.log(error)

@@ -19,11 +19,20 @@ export class UpdateEmployeeComponent implements OnInit {
   ngOnInit() {
     this.employee = new Employee();
     this.id = this.route.snapshot.params.id;
+    this.employeeService
+      .getEmployee(this.id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.employee = data;
+        },
+        error => console.log(error)
+      );
   }
 
   save() {
     this.employeeService
-      .createEmployee(this.employee)
+      .updateEmployee(this.id, this.employee)
       .subscribe(
         data => console.log(data),
         error => console.log(error)
